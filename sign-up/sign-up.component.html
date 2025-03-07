@@ -1,0 +1,162 @@
+<body class="bg-gray-100 p-6">
+    <div *ngIf="!showUploadPane && !showPaymentsPane" class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h2 class="font-bold mb-6">Doctor or Surgery Sign Up Form</h2>
+        <form #signUpForm="ngForm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" [(ngModel)]="doctor.name" name="name"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div>
+                    <label for="identity_number" class="block text-sm font-medium text-gray-700">Identity Number</label>
+                    <input type="text" id="identity_number" [(ngModel)]="doctor.identity_number" name="identity_number"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+
+                <div>
+                    <label for="specialist" class="block text-sm font-medium text-gray-700">Area of Specialty</label>
+                    <select  [(ngModel)]="doctor.specialist" name="specialist"
+                    placeholder="e.g dentist"
+                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="allergist">Allergist</option>
+                        <option value="anesthesiologist">Anesthesiologist</option>
+                        <option value="cardiologist">Cardiologist</option>
+                        <option value="dermatologist">Dermatologist</option>
+                        <option value="emergency_medicine">Emergency Medicine</option>
+                        <option value="endocrinologist">Endocrinologist</option>
+                        <option value="family_medicine">Family Medicine</option>
+                        <option value="gastroenterologist">Gastroenterologist</option>
+                        <option value="geriatrician">Geriatrician</option>
+                        <option value="hematologist">Hematologist</option>
+                        <option value="infectious_disease">Infectious Disease</option>
+                        <option value="internal_medicine">Internal Medicine</option>
+                        <option value="medical_genetics">Medical Genetics</option>
+                        <option value="nephrologist">Nephrologist</option>
+                        <option value="neurologist">Neurologist</option>
+                        <option value="neurosurgeon">Neurosurgeon</option>
+                        <option value="obstetrician_gynecologist">Obstetrician/Gynecologist</option>
+                        <option value="oncologist">Oncologist</option>
+                        <option value="ophthalmologist">Ophthalmologist</option>
+                        <option value="orthopedic_surgeon">Orthopedic Surgeon</option>
+                        <option value="otolaryngologist">Otolaryngologist (ENT)</option>
+                        <option value="pathologist">Pathologist</option>
+                        <option value="pediatrician">Pediatrician</option>
+                        <option value="physiatrist">Physiatrist</option>
+                        <option value="plastic_surgeon">Plastic Surgeon</option>
+                        <option value="podiatrist">Podiatrist</option>
+                        <option value="psychiatrist">Psychiatrist</option>
+                        <option value="pulmonologist">Pulmonologist</option>
+                        <option value="radiologist">Radiologist</option>
+                        <option value="rheumatologist">Rheumatologist</option>
+                        <option value="surgeon">Surgeon</option>
+                        <option value="urologist">Urologist</option>
+                        <option value="other">Other</option>
+                    </select>
+                    
+                </div>
+
+                <div *ngIf="doctor.specialist === 'other'">
+                    <label for="specialist" class="block text-sm font-medium text-gray-700">Specify Area of Specialty</label>
+                    <input type="text" id="specific_specialty" [(ngModel)]="specific_specialty" name="specific_specialty"
+                        placeholder="e.g dentist"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+
+                <!-- <div>
+                    <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
+                    <input type="text" id="rating" name="rating" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="reviews" class="block text-sm font-medium text-gray-700">Reviews</label>
+                    <input type="text" id="reviews" name="reviews" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="isOnline" class="block text-sm font-medium text-gray-700">Is Online</label>
+                    <input type="text" id="isOnline" name="isOnline" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div> -->
+                <div>
+                    <label for="patients" class="block text-sm font-medium text-gray-700">Patients (Estimate)</label>
+                    <input type="number" id="patients" [(ngModel)]="doctor.patients" name="patients"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="experience" class="block text-sm font-medium text-gray-700">Experience</label>
+                    <input type="text" id="experience" [(ngModel)]="doctor.experience" name="experience"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="about" class="block text-sm font-medium text-gray-700">About (Short Bio)</label>
+                    <textarea id="about" [(ngModel)]="doctor.about" name="about"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="3"></textarea>
+                </div>
+                <div>
+                    <label for="workingTime" class="block text-sm font-medium text-gray-700">Working Hours</label>
+                    <input type="text" id="workingTime" [(ngModel)]="doctor.workingTime" name="workingTime"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div>
+                <div>
+                    <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+                    <select id="gender" [(ngModel)]="doctor.gender" name="gender"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" [(ngModel)]="doctor.email" name="email"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                    <input type="tel" id="phone" [(ngModel)]="doctor.phone" name="phone"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                </div>
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                    <textarea id="address" [(ngModel)]="doctor.address" name="address"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="3"></textarea>
+                </div>
+                <div>
+                    <label for="qualifications" class="block text-sm font-medium text-gray-700">Qualifications</label>
+                    <textarea type="text" id="qualifications" [(ngModel)]="doctor.qualifications" name="qualifications"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"></textarea>
+                </div>
+                <!-- <div>
+                    <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                    <select id="status" name="status" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="date_added" class="block text-sm font-medium text-gray-700">Date Added</label>
+                    <input type="date" id="date_added" name="date_added" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+                </div> -->
+            </div>
+            <div class="mt-6">
+                <button (click)="submitDoctorDetails()" [disabled]="signUpForm.invalid" type="submit"
+                    class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="showUploadPane" class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h4 class=" font-bold mb-6">Complete your Registration By Uploading your profile Photo for your clients to see
+            you</h4>
+            <div class="relative flex flex-col items-center w-full max-w-md mx-auto p-4">
+                <input type="file" name="file_to_upload" [(ngModel)]="file_to_upload"  class="w-full p-2 border border-gray-300 rounded-md cursor-pointer" />
+                <button (click)="uploadFile(file_to_upload)" class="mt-4 max-w-full h-auto"></button>
+                <!-- <img *ngIf="uploadedFileURL" [src]="uploadedFileURL" alt="Uploaded File" class="mt-4 max-w-full h-auto" /> -->
+                <br> <br>
+                <button (click)="skipUpload()" style="background-color: #84CC16;" class="absolute bottom-4 right-4 px-4 py-2 text-white bg-lime-300 rounded-md hover:bg-blue-600 ">
+                    Skip this stage <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+    </div>
+
+</body>
